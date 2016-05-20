@@ -13,7 +13,9 @@
 <%= render "partials/sidenav" %>
 <%= render "partials/topnav" %>
 
+<div class="right_col" role="main" style="min-height: 272px; height: 700px;">
 <%= yield %>
+</div>
 
   <%= render "partials/footer" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
