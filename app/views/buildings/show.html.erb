@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Num:</strong>
+  <%= @building.num %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @building.name %>
+</p>
+
+<p>
+  <strong>Face:</strong>
+  <%= @building.face %>
+</p>
+
+<p>
+  <strong>Floor num:</strong>
+  <%= @building.floor_num %>
+</p>
+
+<p>
+  <strong>Building type:</strong>
+  <%= @building.building_type_id %>
+</p>
+
+<p>
+  <strong>Estate:</strong>
+  <%= @building.estate_id %>
+</p>
+
+<%= link_to 'Edit', edit_building_path(@building) %> |
+<%= link_to 'Back', buildings_path %>

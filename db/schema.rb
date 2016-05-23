@@ -11,14 +11,110 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520072519) do
+ActiveRecord::Schema.define(version: 20160523060059) do
+
+  create_table "building_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "buildings", force: :cascade do |t|
+    t.integer  "num"
+    t.string   "name"
+    t.string   "face"
+    t.integer  "floor_num"
+    t.integer  "building_type_id"
+    t.integer  "estate_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "buildint_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "charge_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "charges", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "charge_type_id"
+    t.float    "price"
+    t.integer  "room_id"
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "complaints", force: :cascade do |t|
+    t.text     "content"
+    t.string   "state"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "estates", force: :cascade do |t|
+    t.string   "name"
+    t.float    "area"
+    t.string   "postions"
+    t.integer  "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "count"
+    t.float    "price"
+    t.float    "total_price"
+    t.integer  "product_type_id"
+    t.string   "note"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "room_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string   "room_num"
+    t.string   "room_type_id"
+    t.integer  "building_id"
+    t.date     "room_in_date"
+    t.integer  "area"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
+    t.string   "id_card"
     t.integer  "age"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "address"
+    t.integer  "estate_id"
+    t.integer  "building_id"
+    t.integer  "room_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "role"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

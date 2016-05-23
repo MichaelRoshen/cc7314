@@ -22,14 +22,65 @@ That's it!
 
 Navigate to   http://localhost:3000/plainpage/index
 
-![gentelella on rails ](https://cloud.githubusercontent.com/assets/2548160/14771111/a1523f80-0a78-11e6-87bb-9de1156faf51.png)
 
-------------------------------------------------------------------------
-If you're using devise, you'd need to create another layout to handle authentication and sign_ups as discussed in [issue #2](https://github.com/iogbole/gentelella_on_rails/issues/2). 
+用户 or 业主：
+User: name, role, id_card, age, phone, email, address, estate_id, building_id, room_id
 
-This is the [login template](https://gist.github.com/iogbole/a2f1ddf330cb5194967a1996369619e8). And this is how it looks: 
- 
- ![enter image description here](https://cloud.githubusercontent.com/assets/2548160/14933076/fb9724d2-0e7a-11e6-8e3a-26c352576d07.png)
-  
-----------
-*I committed the vendor files to this repo so you may skip step 3 and 4* 
+rails g scaffold User name:string role:string id_card:string age:integer phone:string email:string address:string estate_id:integer building_id:integer room_id:integer
+
+小区：
+  Estate： name, leader(负责人), area(占地面积), position(位置), price(均价)
+
+rails g scaffold Estate name:string area:float postions:string price:integer
+
+楼房：
+  Building：num(编号), name, face(朝向), floor_num(楼层) ,building_type_id
+
+rails g scaffold building num:integer name:string face:string floor_num:integer building_type_id:integer estate_id:integer
+
+楼房类型：(多层，别墅，高层)
+  BuildingType: name
+
+rails g scaffold building_type name:string
+
+房间：
+  Room: room_num, room_type_id, building_id, room_in_date, area
+
+rails g scaffold room room_num:string room_type_id building_id:integer room_in_date:date area:integer
+
+房间类型： 
+  RoomType: name
+
+rails g scaffold room_type name:string
+
+收费类型：
+  ChargeType: name
+
+rails g scaffold charge_type name:string
+
+收费：
+  Charge: name, charge_type_id, price, room_id, user_id
+
+rails g scaffold charge name:string charge_type_id:integer price:float room_id:integer user_id:integer
+
+投诉：
+  Complaint: user_id, state, content
+
+rails g scaffold complaint content:text state:string user_id:integer
+
+物品采购：
+  Product： name, count, price, total_price, product_type_id, note
+
+rails g scaffold product name:string count:integer price:float total_price:float product_type_id:integer note:string
+
+采购类型
+	ProductType： name
+
+rails g scaffold product_type name:string
+
+业主报修：
+
+设备维修：
+
+
+

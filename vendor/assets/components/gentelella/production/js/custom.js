@@ -123,10 +123,10 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip();
 });
 
-// Progressbar
-if ($(".progress .progress-bar")[0]) {
-    $('.progress .progress-bar').progressbar(); // bootstrap 3
-}
+//  Progressbar
+// if ($(".progress .progress-bar")[0]) {
+//     $('.progress .progress-bar').progressbar(); // bootstrap 3
+// }
 
 // Switchery
 if ($(".js-switch")[0]) {

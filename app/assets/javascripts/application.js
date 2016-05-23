@@ -14,27 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 
-//= require js/flot/jquery.flot.js
-//= require js/flot/jquery.flot.pie.js
-//= require js/flot/jquery.flot.orderBars.js
-//= require js/flot/jquery.flot.time.min.js
-//= require js/flot/date.js
-//= require js/flot/jquery.flot.spline.js
-//= require js/flot/jquery.flot.stack.js
-//= require js/flot/jquery.flot.resize.js
-
+//= require js/custom.js
 //= require js/bootstrap.min.js
-
-//= require js/icheck/icheck.min.js
-
-//= require js/moment/moment.min.js
 //= require js/datepicker/daterangepicker.js
-
-//= require js/chartjs/chart.min.js
-
-//= require js/select/select2.full.js
-
-//= require js/dropzone/dropzone.js
 
 //= require_tree .
 

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @charge.name %>
+</p>
+
+<p>
+  <strong>Charge type:</strong>
+  <%= @charge.charge_type_id %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @charge.price %>
+</p>
+
+<p>
+  <strong>Room:</strong>
+  <%= @charge.room_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @charge.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_charge_path(@charge) %> |
+<%= link_to 'Back', charges_path %>

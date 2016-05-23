@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  resources :building_types
+  resources :room_types
+  resources :users
+  resources :estates
+  resources :buildings
+  resources :rooms
+  resources :charges
+  resources :complaints
+  resources :products
+  resources :product_types
+  resources :charge_types
   resources :users
   get 'home/index'
 
