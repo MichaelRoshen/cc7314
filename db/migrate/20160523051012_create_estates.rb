@@ -3,7 +3,7 @@ class CreateEstates < ActiveRecord::Migration
     create_table :estates do |t|
       t.string :name
       t.float :area
-      t.string :postions
+      t.string :position
       t.integer :price
 
       t.timestamps null: false

@@ -30,12 +30,6 @@ ActiveRecord::Schema.define(version: 20160523060059) do
     t.datetime "updated_at",       null: false
   end
 
-  create_table "buildint_types", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "charge_types", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -63,7 +57,7 @@ ActiveRecord::Schema.define(version: 20160523060059) do
   create_table "estates", force: :cascade do |t|
     t.string   "name"
     t.float    "area"
-    t.string   "postions"
+    t.string   "position"
     t.integer  "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -96,6 +90,7 @@ ActiveRecord::Schema.define(version: 20160523060059) do
     t.string   "room_num"
     t.string   "room_type_id"
     t.integer  "building_id"
+    t.integer  "user_id"
     t.date     "room_in_date"
     t.integer  "area"
     t.datetime "created_at",   null: false
@@ -111,7 +106,6 @@ ActiveRecord::Schema.define(version: 20160523060059) do
     t.string   "address"
     t.integer  "estate_id"
     t.integer  "building_id"
-    t.integer  "room_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "role"
