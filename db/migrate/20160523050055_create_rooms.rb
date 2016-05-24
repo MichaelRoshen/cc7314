@@ -1,8 +1,10 @@
 class CreateRooms < ActiveRecord::Migration
   def change
     create_table :rooms do |t|
-      t.string :room_num
-      t.string :room_type_id
+      t.string :house_num
+      t.integer :cell_gate
+      t.integer :floor
+      t.integer :room_type_id
       t.integer :building_id
       t.integer :user_id
       t.date :room_in_date
@@ -12,3 +14,4 @@ class CreateRooms < ActiveRecord::Migration
     end
   end
 end
+

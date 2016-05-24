@@ -23,7 +23,9 @@ ActiveRecord::Schema.define(version: 20160523060059) do
     t.integer  "num"
     t.string   "name"
     t.string   "face"
+    t.integer  "cell_gate_num"
     t.integer  "floor_num"
+    t.integer  "door_num"
     t.integer  "building_type_id"
     t.integer  "estate_id"
     t.datetime "created_at",       null: false
@@ -87,8 +89,10 @@ ActiveRecord::Schema.define(version: 20160523060059) do
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.string   "room_num"
-    t.string   "room_type_id"
+    t.string   "house_num"
+    t.integer  "cell_gate"
+    t.integer  "floor"
+    t.integer  "room_type_id"
     t.integer  "building_id"
     t.integer  "user_id"
     t.date     "room_in_date"

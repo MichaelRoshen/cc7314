@@ -4,7 +4,9 @@ class CreateBuildings < ActiveRecord::Migration
       t.integer :num
       t.string :name
       t.string :face
+      t.integer :cell_gate_num
       t.integer :floor_num
+      t.integer :door_num
       t.integer :building_type_id
       t.integer :estate_id
 
@@ -12,3 +14,4 @@ class CreateBuildings < ActiveRecord::Migration
     end
   end
 end
+

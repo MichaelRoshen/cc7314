@@ -34,9 +34,9 @@ rails g scaffold User name:string role:string id_card:string age:integer phone:s
 rails g scaffold Estate name:string area:float postions:string price:integer
 
 楼房：
-  Building：num(编号), name, face(朝向), floor_num(楼层) ,building_type_id
+  Building：num(编号), name(A，B区), face(朝向), floor_num(楼层) , cell_gate_num(单元门数), door_num(一梯几户), building_type_id
 
-rails g scaffold building num:integer name:string face:string floor_num:integer building_type_id:integer estate_id:integer
+rails g scaffold building num:integer name:string face:string floor_num:integer building_type_id:integer door_num:integer estate_id:integer cell_gate_num:integer
 
 楼房类型：(多层，别墅，高层)
   BuildingType: name
@@ -44,9 +44,9 @@ rails g scaffold building num:integer name:string face:string floor_num:integer 
 rails g scaffold building_type name:string
 
 房间：
-  Room: room_num, room_type_id, building_id, room_in_date, area
+  Room: cell_gate(单元门), floor(层), house_num(门牌号), room_type_id, building_id, room_in_date(入住时间), area(建筑面积)
 
-rails g scaffold room room_num:string room_type_id building_id:integer room_in_date:date area:integer
+rails g scaffold room cell_gate:integer floor:integer house_num:string room_type_id:integer building_id:integer room_in_date:date area:integer
 
 房间类型： 
   RoomType: name
@@ -82,5 +82,7 @@ rails g scaffold product_type name:string
 
 设备维修：
 
+领取钥匙记录
+room_id, user_id, date, note
 
 

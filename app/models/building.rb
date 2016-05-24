@@ -1,5 +1,5 @@
 class Building < ActiveRecord::Base
-  has_many :building_types
+  belongs_to :building_type
   has_many :rooms
   belongs_to :estate
 end

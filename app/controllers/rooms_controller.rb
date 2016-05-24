@@ -4,7 +4,7 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.json
   def index
-    @rooms = Room.all
+    @rooms = Room.includes(:building,:room_type).page(params[:page] || 1).per(params[:per_page] || 15)
   end
 
   # GET /rooms/1

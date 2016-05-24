@@ -29,26 +29,30 @@ building_type_ids = BuildingType.all.map(&:id)
 room_type_ids = RoomType.all.map(&:id)
 
 ##创建楼宇
+# Building：num(编号), name(A，B区), face(朝向), floor_num(楼层) , cell_gate_num(单元门数), door_num(一梯几户), building_type_id
+
 puts "创建楼宇..."
-1.upto 20 do |i|
+1.upto 10 do |i|
   attries = {:num => i, :name => "#{i}号楼", 
              :face => ["朝南","朝北","南北通透"].sample, 
              :floor_num => 18, :building_type_id => building_type_ids.sample,
-             :estate_id => es.id}
+             :estate_id => es.id, :cell_gate_num => 6, :door_num => 3}
   Building.create(attries)
 end
 
 ##创建房间
 puts "创建房间&业主..."
 Building.all.each do |building|
-  1.upto 10 do |i|
-    ['01','02'].each do |num|
-      id_card = rand(10).hash.abs.to_s[0..17]
-      user = User.create({:name => "user_#{i}#{num}", :age => rand(20..50), :id_card => id_card, :estate_id => es.id, :building_id =>building.id })
-      attries = {:room_num => "#{i}#{num}", :room_type_id => room_type_ids.sample,
-                 :building_id => building.id, :room_in_date => (Date.today-rand(365*3)).to_s,
-                 :area => rand(80..150).to_f, :user_id => user.id}
-      Room.create(attries)
+  1.upto building.cell_gate_num do |gate|
+    1.upto building.floor_num do |floor|
+      1.upto building.door_num do |door|
+        id_card = rand(10).hash.abs.to_s[0..17]
+        user = User.create({:name => "user_#{gate}-#{floor}0#{door}", :age => rand(20..50), :id_card => id_card, :estate_id => es.id, :building_id =>building.id })
+        attries = {:cell_gate => gate, :floor => floor, :house_num => "0#{door}", :room_type_id => room_type_ids.sample,
+                   :building_id => building.id, :room_in_date => (Date.today-rand(365*3)).to_s,
+                   :area => rand(80..150).to_f, :user_id => user.id}
+        Room.create(attries)
+      end
     end
   end
 end
