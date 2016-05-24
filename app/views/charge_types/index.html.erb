@@ -1,27 +1,34 @@
 <p id="notice"><%= notice %></p>
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2><%= link_to '创建收费项目类型', new_charge_type_path, {:class => "btn btn-primary"} %><small>Custom design</small></h2>
+      <div class="clearfix"></div>
+    </div>
 
-<h1>Listing Charge Types</h1>
+    <div class="x_content">
+      <table class="table table-striped responsive-utilities jambo_table bulk_action">
+        <thead>
+          <tr class="headings">
+            <th class="column-title">收费项目</th>
+            <th class="column-title no-link last" colspan="2">
+              <span class="nobr">操作</span>
+            </th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <tbody>
+          <% @charge_types.each_with_index do |charge_type, index| %>
+            <% odd = index.odd? %>
+            <tr class="<%= odd ? 'odd' : 'even'%> pointer">
+              <td class=" "><%= charge_type.name %></td>
+              <td><%= link_to '编辑', edit_charge_type_path(charge_type) %></td>
+              <td><%= link_to '删除', charge_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-  <tbody>
-    <% @charge_types.each do |charge_type| %>
-      <tr>
-        <td><%= charge_type.name %></td>
-        <td><%= link_to 'Show', charge_type %></td>
-        <td><%= link_to 'Edit', edit_charge_type_path(charge_type) %></td>
-        <td><%= link_to 'Destroy', charge_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Charge type', new_charge_type_path %>

@@ -53,7 +53,7 @@ rails g scaffold room cell_gate:integer floor:integer house_num:string room_type
 
 rails g scaffold room_type name:string
 
-收费类型：
+收费项目：
   ChargeType: name
 
 rails g scaffold charge_type name:string

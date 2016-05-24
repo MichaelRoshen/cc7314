@@ -4,7 +4,7 @@ class ChargesController < ApplicationController
   # GET /charges
   # GET /charges.json
   def index
-    @charges = Charge.all
+    @charges = Charge.includes(:user, :charge_type).page(params[:page]||1).per(params[:perpage] || 15)
   end
 
   # GET /charges/1

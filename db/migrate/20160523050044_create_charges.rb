@@ -4,7 +4,6 @@ class CreateCharges < ActiveRecord::Migration
       t.string :name
       t.integer :charge_type_id
       t.float :price
-      t.integer :room_id
       t.integer :user_id
 
       t.timestamps null: false

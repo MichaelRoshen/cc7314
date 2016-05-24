@@ -14,7 +14,8 @@ RoomType.destroy_all
 Building.destroy_all
 Room.destroy_all
 User.destroy_all
-
+ChargeType.destroy_all
+Charge.destroy_all
 
 ##创建项目
 puts "创建项目..."
@@ -56,4 +57,24 @@ Building.all.each do |building|
     end
   end
 end
+
+##创建房间
+puts "创建费用类型..."
+['物业费','电梯费','水费','电费','燃气费','取暖费','装修垃圾清理费'].each do |name|
+  ChargeType.create({:name => name})
+end
+
+
+##创建收费订单
+puts "创建收费订单..."
+
+Room.all.sample(1000).each do |room|
+  ChargeType.all.sample(rand(5)).each do |charge_type|
+    Charge.create({:name => charge_type.name, :charge_type_id => charge_type.id, :price => rand(600).to_f, :user_id => room.user.id})  
+  end
+end
+
+
+
+
 

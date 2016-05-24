@@ -4,7 +4,7 @@ class BuildingsController < ApplicationController
   # GET /buildings
   # GET /buildings.json
   def index
-    @buildings = Building.all
+    @buildings = Building.includes(:estate, :building_type).page(params[:page] || 1).per(params[:perpage] || 15)
   end
 
   # GET /buildings/1
