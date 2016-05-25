@@ -12,8 +12,8 @@
           <tr class="headings">
             <th class="column-title">姓名 </th>
             <th class="column-title">年龄</th>
-            <th class="column-title">角色</th>
-            <th class="column-title no-link last" colspan="2"><span class="nobr">操作</span>
+            <th class="column-title">门牌号</th>
+            <th class="column-title no-link last" colspan="3"><span class="nobr">操作</span>
             </th>
           </tr>
         </thead>
@@ -24,7 +24,8 @@
             <tr class="<%= odd ? 'odd' : 'even'%> pointer">
               <td class=" "><%= user.name %></td>
               <td class=" "><%= user.age %></td>
-              <td class=" "><%= user.role %></td>
+              <td class=" "><%= user.room.room_num %></td>
+              <td><%= link_to "缴费记录(#{user.charges.count})", orders_user_path(user) %></td>
               <td><%= link_to '编辑', edit_user_path(user) %></td>
               <td><%= link_to '删除', user, method: :delete, data: { confirm: '确定删除?' } %></td>
               </td>

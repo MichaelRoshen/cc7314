@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   resources :building_types
   resources :room_types
-  resources :users
+  
+  resources :users do 
+    member do 
+      get 'orders'
+    end
+  end
+
   resources :estates
   resources :buildings
   resources :rooms

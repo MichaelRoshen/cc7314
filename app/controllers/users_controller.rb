@@ -1,10 +1,14 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :orders]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.page(params[:page] || 1).per(params[:perpage] || 15)
+    @users = User.includes(:charges, :room).page(params[:page] || 1).per(params[:perpage] || 15)
+  end
+
+  def orders
+    @charges = @user.charges.page(params[:page] || 1).per(params[:perpage] || 15)
   end
 
   # GET /users/1

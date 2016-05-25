@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 
 //= require js/custom.js
 //= require js/bootstrap.min.js
