@@ -1,3 +1,3 @@
 class RoomType < ActiveRecord::Base
-  belongs_to :room
+  has_many :user
 end

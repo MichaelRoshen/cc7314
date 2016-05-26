@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     member do 
       get 'orders'
     end
+    collection do 
+      get 'employees'
+    end
   end
 
   resources :estates

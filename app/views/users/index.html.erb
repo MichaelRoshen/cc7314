@@ -2,7 +2,7 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="x_panel">
     <div class="x_title">
-      <h2><%= link_to '创建用户', new_user_path, {:class => "btn btn-primary"} %><small>Custom design</small></h2>
+      <h2><%= link_to '创建房间', new_user_path, {:class => "btn btn-primary"} %><small>Custom design</small></h2>
       <div class="clearfix"></div>
     </div>
 
@@ -10,9 +10,14 @@
       <table class="table table-striped responsive-utilities jambo_table bulk_action">
         <thead>
           <tr class="headings">
-            <th class="column-title">姓名 </th>
-            <th class="column-title">年龄</th>
+            <th class="column-title">楼宇</th>
             <th class="column-title">门牌号</th>
+            <th class="column-title">业主</th>
+            <th class="column-title">联系电话</th>
+            <th class="column-title">房型</th>
+            <th class="column-title">入住日期</th>
+            <th class="column-title">建筑面积</th>
+            
             <th class="column-title no-link last" colspan="3"><span class="nobr">操作</span>
             </th>
           </tr>
@@ -22,11 +27,20 @@
           <% @users.each_with_index do |user, index| %>
             <% odd = index.odd? %>
             <tr class="<%= odd ? 'odd' : 'even'%> pointer">
+              <td class=" "><%= user.building.num %>号楼</td>
+              <td class=" "><%= user.room %></td>
               <td class=" "><%= user.name %></td>
-              <td class=" "><%= user.age %></td>
-              <td class=" "><%= user.room.room_num %></td>
+              <td class=" "><%= user.phone %></td>
+              <td class=" "><%= user.room_type.name %></td>
+              <td class=" "><%= user.room_in_date %></td>
+              <td class=" "><%= user.area %></td>
               <td><%= link_to "缴费记录(#{user.charges.count})", orders_user_path(user) %></td>
-              <td><%= link_to '编辑', edit_user_path(user) %></td>
+              <% if user.room_in_date.present? %>
+                <td><%= link_to '修改信息', edit_user_path(user) %></td>
+              <% else %>
+                <td><%= link_to '办理入住', edit_user_path(user) %></td>
+              <% end %>
+              
               <td><%= link_to '删除', user, method: :delete, data: { confirm: '确定删除?' } %></td>
               </td>
             </tr>

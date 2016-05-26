@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 20160523060059) do
     t.string   "name"
     t.integer  "charge_type_id"
     t.float    "price"
-    t.integer  "room_id"
     t.integer  "user_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
@@ -88,31 +87,22 @@ ActiveRecord::Schema.define(version: 20160523060059) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "rooms", force: :cascade do |t|
-    t.string   "house_num"
-    t.integer  "cell_gate"
-    t.integer  "floor"
-    t.integer  "room_type_id"
-    t.integer  "building_id"
-    t.integer  "user_id"
-    t.date     "room_in_date"
-    t.integer  "area"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "id_card"
     t.integer  "age"
     t.string   "phone"
-    t.string   "email"
-    t.string   "address"
-    t.integer  "estate_id"
-    t.integer  "building_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
     t.string   "role"
+    t.string   "email"
+    t.integer  "cell_gate"
+    t.integer  "floor"
+    t.integer  "house_num"
+    t.date     "room_in_date"
+    t.integer  "room_type_id"
+    t.integer  "building_id"
+    t.float    "area"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end

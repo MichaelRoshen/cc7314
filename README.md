@@ -24,9 +24,9 @@ Navigate to   http://localhost:3000/plainpage/index
 
 
 用户 or 业主：
-User: name, role, id_card, age, phone, email, address, estate_id, building_id, room_id
+User: name, role, id_card, age, phone, email, address, cell_gate(单元门), floor(层), house_num(门牌号), room_type_id, building_id, room_in_date(入住时间), area(建筑面积)
 
-rails g scaffold User name:string role:string id_card:string age:integer phone:string email:string address:string estate_id:integer building_id:integer room_id:integer
+rails g scaffold User name:string role:string id_card:string age:integer cell_gate:integer floor:integer house_num:integer phone:string email:string address:string building_id:integer room_type_id:integer room_in_date:date area:float
 
 小区：
   Estate： name, leader(负责人), area(占地面积), position(位置), price(均价)

@@ -12,7 +12,6 @@ Estate.destroy_all
 BuildingType.destroy_all
 RoomType.destroy_all
 Building.destroy_all
-Room.destroy_all
 User.destroy_all
 ChargeType.destroy_all
 Charge.destroy_all
@@ -29,9 +28,6 @@ puts "创建楼层类型  房间类型..."
 building_type_ids = BuildingType.all.map(&:id)
 room_type_ids = RoomType.all.map(&:id)
 
-##创建楼宇
-# Building：num(编号), name(A，B区), face(朝向), floor_num(楼层) , cell_gate_num(单元门数), door_num(一梯几户), building_type_id
-
 puts "创建楼宇..."
 1.upto 10 do |i|
   attries = {:num => i, :name => "#{i}号楼", 
@@ -47,16 +43,30 @@ Building.all.each do |building|
   1.upto building.cell_gate_num do |gate|
     1.upto building.floor_num do |floor|
       1.upto building.door_num do |door|
-        id_card = rand(10).hash.abs.to_s[0..17]
-        user = User.create({:name => "user_#{gate}-#{floor}0#{door}", :age => rand(20..50), :id_card => id_card, :estate_id => es.id, :building_id =>building.id })
-        attries = {:cell_gate => gate, :floor => floor, :house_num => "0#{door}", :room_type_id => room_type_ids.sample,
-                   :building_id => building.id, :room_in_date => (Date.today-rand(365*3)).to_s,
-                   :area => rand(80..150).to_f, :user_id => user.id}
-        Room.create(attries)
+         attries = {:cell_gate => gate, 
+                    :floor => floor, :house_num => door, 
+                    :room_type_id => room_type_ids.sample,
+                    :building_id => building.id, :room_in_date => nil,
+                    :area => rand(80..150).to_f
+                  }
+        User.create(attries)
       end
     end
   end
 end
+
+##办理入住
+puts "办理入住中..."
+User.all.sample(1000).each do |user|
+  id_card = rand(10).hash.abs.to_s[0..17]
+  date = (Date.today-rand(365*3)).to_s
+  user.update_attributes({:name => user.demo_user_name, 
+                          :age => rand(20..50), :id_card => id_card,
+                          :phone => "15901552733", :email => "demo@163.com",
+                          :role => "yezhu", :room_in_date => date})
+end
+
+
 
 ##创建房间
 puts "创建费用类型..."
@@ -68,12 +78,21 @@ end
 ##创建收费订单
 puts "创建收费订单..."
 
-Room.all.sample(1000).each do |room|
+User.all.sample(1000).each do |user|
   ChargeType.all.sample(rand(5)).each do |charge_type|
-    Charge.create({:name => charge_type.name, :charge_type_id => charge_type.id, :price => rand(600).to_f, :user_id => room.user.id})  
+    Charge.create({:name => charge_type.name, :charge_type_id => charge_type.id, :price => rand(600).to_f, :user_id => user.id})  
   end
 end
 
+##创建物业员工
+puts "创建物业员工..."
+1.upto(5) do |i|
+id_card = rand(10).hash.abs.to_s[0..17]
+User.create({:name => "物业员工#{i}", 
+             :age => rand(20..50), :id_card => id_card,
+             :phone => "15901552733", :email => "yuangong@163.com",
+             :role => "yuangong"})
+end
 
 
 
