@@ -41,6 +41,7 @@ end
 
 group :produciton do
   gem 'pg'
+  gem 'rails_12factor'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
 end
 
