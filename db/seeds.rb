@@ -78,8 +78,8 @@ end
 ##创建收费订单
 puts "创建收费订单..."
 
-User.all.sample(1000).each do |user|
-  ChargeType.all.sample(rand(5)).each do |charge_type|
+User.where({:room_in_date != nil}).all.sample(1000).each do |user|
+  ChargeType.all.sample(rand(20)).each do |charge_type|
     Charge.create({:name => charge_type.name, :charge_type_id => charge_type.id, :price => rand(600).to_f, :user_id => user.id})  
   end
 end
