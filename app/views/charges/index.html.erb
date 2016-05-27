@@ -29,7 +29,7 @@
             <tr class="<%= odd ? 'odd' : 'even'%> pointer">
               <td class=" "><%= charge.charge_type.name %></td>
               <td class=" "><%= charge.price %></td>
-              <td class=" "><%= user.room.room_num %></td>
+              <td class=" "><%= user.room %></td>
               <td class=" "><%= user.name %></td>
               <td class=" "><%= charge.charge_date %></td>
               <td><%= link_to '编辑', edit_charge_path(charge) %></td>
