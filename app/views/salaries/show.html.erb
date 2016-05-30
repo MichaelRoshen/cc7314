@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @salary.user_id %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @salary.price %>
+</p>
+
+<p>
+  <strong>Bonus:</strong>
+  <%= @salary.bonus %>
+</p>
+
+<p>
+  <strong>Grant date:</strong>
+  <%= @salary.grant_date %>
+</p>
+
+<%= link_to 'Edit', edit_salary_path(@salary) %> |
+<%= link_to 'Back', salaries_path %>

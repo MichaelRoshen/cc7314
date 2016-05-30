@@ -78,6 +78,12 @@ rails g scaffold product name:string count:integer price:float total_price:float
 
 rails g scaffold product_type name:string
 
+员工工资：
+salary ： price(工资) bonus(奖金) grant_date(发放日期)
+
+rails g salary user_id:integer price:float bonus:float grant_date:date
+
+
 业主报修：
 
 设备维修：

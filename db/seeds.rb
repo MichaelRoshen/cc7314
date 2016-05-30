@@ -15,6 +15,9 @@ Building.destroy_all
 User.destroy_all
 ChargeType.destroy_all
 Charge.destroy_all
+ProductType.destroy_all
+Product.destroy_all
+Salary.destroy_all
 
 ##创建项目
 puts "创建项目..."
@@ -108,5 +111,15 @@ puts "物业采购..."
     product = Product.new({:name => "#{type.name}用品#{rand(2)}", :count => rand(1..10), :price => rand(1000).to_f, :note => "备注: 采购单位:xxx, 联系人: xxxx", :date => (Date.today-rand(30*3)).to_s, :product_type_id => type.id})
     product.total_price = product.count * product.price
     product.save
+  end
+end
+
+##发放工资
+puts "发放工资..."
+employes = User.where({:role => "yuangong"})
+
+[Date.today, Date.today-30, Date.today-60].each do |date|
+  employes.each do |employ|
+    Salary.create({:user_id => employ.id, :price => rand(2000..3000), :bonus => rand(2000..3000), :grant_date => date})
   end
 end

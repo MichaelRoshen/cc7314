@@ -30,6 +30,8 @@ gem 'kaminari', '0.16.3'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+gem 'lazy_high_charts'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

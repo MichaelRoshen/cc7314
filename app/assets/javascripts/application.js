@@ -14,6 +14,7 @@
 //= require jquery_ujs
 
 //= require js/custom.js
+//= require highcharts/highcharts
 //= require js/bootstrap.min.js
 //= require js/datepicker/daterangepicker.js
 

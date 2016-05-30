@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2><%= link_to '发放工资', new_salary_path, {:class => "btn btn-primary"} %></h2>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="x_content">
+      <table class="table table-striped responsive-utilities jambo_table bulk_action">
+        <thead>
+          <tr class="headings">
+            <th class="column-title">姓名</th>
+            <th class="column-title">工资</th>
+            <th class="column-title">奖金</th>
+            <th class="column-title">发放日期</th>
+            <th class="column-title no-link last" colspan="3"><span class="nobr">操作</span>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @salaries.each_with_index do |salary, index| %>
+            <% odd = index.odd? %>
+            <tr class="<%= odd ? 'odd' : 'even'%> pointer">
+              <td class=" "><%= salary.user.name %></td>
+              <td class=" "><%= salary.price %></td>
+              <td class=" "><%= salary.bonus %></td>
+              <td class=" "><%= salary.grant_date %></td>
+              <td><%= link_to '编辑', edit_salary_path(salary) %></td>
+              <td><%= link_to '删除', salary, method: :delete, data: { confirm: '确定删除?' } %></td>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @salaries %>
+    </div>
+  </div>
+</div>
+
+
