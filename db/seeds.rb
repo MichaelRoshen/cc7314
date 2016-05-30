@@ -95,5 +95,18 @@ User.create({:name => "物业员工#{i}",
 end
 
 
+##创建采购类型
+puts "创建采购类型..."
+['保洁','安保','绿化','消防','设备'].each do |name|
+  ProductType.create({:name => name})
+end
 
-
+##物业采购
+puts "物业采购..."
+1.upto 100 do |i|
+  ProductType.all.sample(5).each do |type|
+    product = Product.new({:name => "#{type.name}用品#{rand(2)}", :count => rand(1..10), :price => rand(1000).to_f, :note => "备注: 采购单位:xxx, 联系人: xxxx", :date => (Date.today-rand(30*3)).to_s, :product_type_id => type.id})
+    product.total_price = product.count * product.price
+    product.save
+  end
+end

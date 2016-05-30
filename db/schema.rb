@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20160523060059) do
     t.integer  "count"
     t.float    "price"
     t.float    "total_price"
+    t.date     "date"
     t.integer  "product_type_id"
     t.string   "note"
     t.datetime "created_at",      null: false

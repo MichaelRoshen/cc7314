@@ -5,6 +5,7 @@ class CreateProducts < ActiveRecord::Migration
       t.integer :count
       t.float :price
       t.float :total_price
+      t.date :date
       t.integer :product_type_id
       t.string :note
 
