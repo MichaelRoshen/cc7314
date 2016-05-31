@@ -66,7 +66,7 @@ rails g scaffold charge name:string charge_type_id:integer price:float room_id:i
 投诉：
   Complaint: user_id, state, content
 
-rails g scaffold complaint content:text state:string user_id:integer
+rails g scaffold complaint phone:string address:string send_date:date repair_date:date repairman:string summary:text note:text
 
 物品采购：
   Product： name, count, price, total_price, product_type_id, note

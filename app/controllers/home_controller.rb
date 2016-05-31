@@ -3,10 +3,10 @@ class HomeController < ApplicationController
     @selected_date = Date.today
     @beginning_of_month = @selected_date.beginning_of_month
     @end_of_month = @selected_date.end_of_month
-    products = Product.where({:date => @beginning_of_month..@end_of_month})
+    products = Product.includes(:product_type).where({:date => @beginning_of_month..@end_of_month})
     p_types, p_prices = [],[]
-    products.group_by{|p|p.product_type_id}.each do |key, items|
-      p_types << ProductType.find(key).name rescue "未知"
+    products.group_by{|p|p.product_type}.each do |type, items|
+      p_types << type.name rescue "未知"
       p_prices << items.map(&:total_price).sum
     end
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
@@ -23,8 +23,8 @@ class HomeController < ApplicationController
 
     total = products.map(&:total_price).sum
     products_pie_data = []
-    products.group_by{|p|p.product_type_id}.each do |key, items|
-      products_pie_data << [(ProductType.find(key).name rescue "未知"), (items.map(&:total_price).sum*100/total).round(2)]
+    products.group_by{|p|p.product_type}.each do |type, items|
+      products_pie_data << [(type.name rescue "未知"), (items.map(&:total_price).sum*100/total).round(2)]
     end
 
     @chart_pie = LazyHighCharts::HighChart.new('pie') do |f|
