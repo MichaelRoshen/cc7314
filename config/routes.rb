@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :repairs
   resources :salaries
   resources :building_types
   resources :room_types

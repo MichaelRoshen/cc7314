@@ -18,6 +18,7 @@ Charge.destroy_all
 ProductType.destroy_all
 Product.destroy_all
 Salary.destroy_all
+Repair.destroy_all
 
 ##创建项目
 puts "创建项目..."
@@ -107,7 +108,7 @@ end
 ##物业采购
 puts "物业采购..."
 1.upto 100 do |i|
-  ProductType.all.sample(5).each do |type|
+  ProductType.all.sample(10).each do |type|
     product = Product.new({:name => "#{type.name}用品#{rand(2)}", :count => rand(1..10), :price => rand(1000).to_f, :note => "备注: 采购单位:xxx, 联系人: xxxx", :date => (Date.today-rand(30*3)).to_s, :product_type_id => type.id})
     product.total_price = product.count * product.price
     product.save
@@ -123,3 +124,33 @@ employes = User.where({:role => "yuangong"})
     Salary.create({:user_id => employ.id, :price => rand(2000..3000), :bonus => rand(2000..3000), :grant_date => date})
   end
 end
+
+
+##物业报修
+puts "物业报修..."
+1.upto(20) do |i|
+  send_date = Date.today-rand(6)
+  Repair.create({:phone => "159#{i}733232#{i}", :address => "3号楼3-#{i}01", :send_date =>send_date, :summary => ["房屋跑水", "水表坏了", "公共设施维修"].sample})
+end
+
+##物业维修
+puts "物业维修..."
+Repair.all.sample(17).each do |repair|
+  repair.repair_date = repair.send_date
+  repair.repairman = ['张师傅','王师傅','李师傅'].sample
+  repair.save
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+

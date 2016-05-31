@@ -84,7 +84,9 @@ salary ： price(工资) bonus(奖金) grant_date(发放日期)
 rails g salary user_id:integer price:float bonus:float grant_date:date
 
 
-业主报修：
+物业报修：
+repair： summary(描述) send_date(报修时间) repair_date(修复时间) repairman(维修人员) note(备注)
+rails g scaffold repair  phone:string address:string send_date:date repair_date:date repairman:string summary:text note:text
 
 设备维修：
 

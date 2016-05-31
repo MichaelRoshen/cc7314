@@ -33,10 +33,25 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-12 col-sm-6 col-xs-12">
+  <div class="col-md-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>物业采购费用</h2>
+        <h2>物业采购费用饼状图(<%= @beginning_of_month %>~<%= @end_of_month%>)</h2>
+        <ul class="nav navbar-right panel_toolbox">
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <%= high_chart("some_3id", @chart3) %>
+      </div>
+    </div>
+  </div> 
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>物业采购费用柱形图(<%= @beginning_of_month %>~<%= @end_of_month%>)</h2>
         <ul class="nav navbar-right panel_toolbox">
         </ul>
         <div class="clearfix"></div>
@@ -45,13 +60,11 @@
         <%= high_chart("some_id", @chart) %>
       </div>
     </div>
-  </div>  
-</div>
-<div class="row">
-  <div class="col-md-12 col-sm-6 col-xs-12">
+  </div> 
+  <div class="col-md-6">
     <div class="x_panel">
       <div class="x_title">
-        <h2>物业采购费用</h2>
+        <h2>物业采购费用饼状图(<%= @beginning_of_month %>~<%= @end_of_month%>)</h2>
         <ul class="nav navbar-right panel_toolbox">
         </ul>
         <div class="clearfix"></div>
@@ -60,7 +73,22 @@
         <%= high_chart("some_1id", @chart_pie) %>
       </div>
     </div>
-  </div>
+  </div> 
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>物业采购费用饼状图(<%= @beginning_of_month %>~<%= @end_of_month%>)</h2>
+        <ul class="nav navbar-right panel_toolbox">
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <%= high_chart("some_4id", @chart4) %>
+      </div>
+    </div>
+  </div> 
 </div>
 
 

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @repair.phone %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @repair.address %>
+</p>
+
+<p>
+  <strong>Send date:</strong>
+  <%= @repair.send_date %>
+</p>
+
+<p>
+  <strong>Repair date:</strong>
+  <%= @repair.repair_date %>
+</p>
+
+<p>
+  <strong>Repairman:</strong>
+  <%= @repair.repairman %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @repair.summary %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @repair.note %>
+</p>
+
+<%= link_to 'Edit', edit_repair_path(@repair) %> |
+<%= link_to 'Back', repairs_path %>

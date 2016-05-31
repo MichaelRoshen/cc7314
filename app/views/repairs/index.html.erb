@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2><%= link_to '创建房间', new_repair_path, {:class => "btn btn-primary"} %><small>Custom design</small></h2>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="x_content">
+      <table class="table table-striped responsive-utilities jambo_table bulk_action">
+        <thead>
+          <tr class="headings">
+            <th class="column-title">联系电话</th>
+            <th class="column-title">报修日期</th>
+            <th class="column-title">地址</th>
+            <th class="column-title">描述</th>
+            <th class="column-title">修复日期</th>
+            <th class="column-title">维修人员</th>
+            <th class="column-title">备注</th>
+            
+            <th class="column-title no-link last" colspan="3"><span class="nobr">操作</span>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @repairs.each_with_index do |repair, index| %>
+            <% odd = index.odd? %>
+            <tr class="<%= odd ? 'odd' : 'even'%> pointer">
+              <td class=" "><%= repair.phone %></td>
+              <td class=" "><%= repair.send_date %></td>
+              <td class=" "><%= repair.address %></td>
+              <td class=" "><%= repair.summary %></td>
+              <td class=" "><%= repair.repair_date %></td>
+              <td class=" "><%= repair.repairman %></td>
+              <td class=" "><%= repair.note %></td>
+              <td><%= link_to '编辑', edit_repair_path(repair) %></td>
+              <td><%= link_to '删除', repair, method: :delete, data: { confirm: '确定删除?' } %></td>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @repairs %>
+    </div>
+  </div>
+</div>
+
