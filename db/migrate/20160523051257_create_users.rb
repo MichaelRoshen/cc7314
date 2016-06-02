@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :phone
       t.string :role
       t.string :email
+      t.string :login
       t.integer :cell_gate
       t.integer :floor
       t.integer :house_num

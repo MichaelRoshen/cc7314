@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  
+  devise_for :users, path: 'account', controllers: {
+    sessions: "custom_devise/sessions",
+  }
+
   resources :repairs
   resources :salaries
   resources :building_types
@@ -21,7 +26,6 @@ Rails.application.routes.draw do
   resources :products
   resources :product_types
   resources :charge_types
-  resources :users
   root :to => 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

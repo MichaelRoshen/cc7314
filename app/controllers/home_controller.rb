@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @selected_date = Date.today
     @beginning_of_month = @selected_date.beginning_of_month
